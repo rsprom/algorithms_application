@@ -1,17 +1,28 @@
 ﻿using System;
 
-namespace algorithmsExcercises
+namespace algorithmsExercises
 {
+    class Node
+    {
+        public object data;
+        public Node next;
+    }
+
     class LinkedList
     {
-        public class Node
+        private int size;
+        private Node _head;
+        private Node _tail;
+
+        // Constructs default list
+        public LinkedList()
         {
-            public object node;
-            public Node next;
+            size = 0;
+            _head = null;
+            _tail = null;
         }
 
-        private int size;
-
+        // Keeps count of list
         public int Count
         {
             get
@@ -20,53 +31,58 @@ namespace algorithmsExcercises
             }
         }
 
-        private Node head;
-        private Node current;
-
-        // Constructs default list
-        public LinkedList()
-        {
-            size = 0;
-            head = null;
-        }
-
-        // Add item to list
-        public void Add(object item)
+        // Add item to list to the front
+        public void AddToFront(object item)
         {
             size++;
 
-            var node = new Node()
-            {
-                node = item
-            };
+            var insert = new Node();
 
-            if (head == null)
-                head = node;
-            else
-                current.next = node;
-
-            Console.WriteLine("Written Object");
+            insert.data = item;
+            insert.next = _head;
+            _head = insert;
         }
 
-        // Delete specific item from the list
-        public void Delete(object item)
+        //Add item to the back
+        public void AddToBack(object item)
         {
-            size--;
+            size++;
 
-            Node pointer = current;
+            var insert = new Node();
+            Node pointer = new Node();
 
-            if (pointer.Equals(item))
+            pointer = _head;
+            insert.data = item;
+            insert.next = _tail;
+
+            if (_head == null)
             {
-                current = current.next;
+                _head = insert;
+                _head.next = _tail;
+                return;
             }
-            else
+
+            while (pointer.next != null)
             {
-                pointer = current.next;
+                pointer = pointer.next;
             }
 
-            Console.WriteLine("Deleted Object");
-
+            pointer.next = insert;
         }
 
+        public String ToString()
+        {
+            String completeList = "";
+
+            Node tempNode = _head;
+
+            while (tempNode != null)
+            {
+                completeList += tempNode.data + "\n";
+                tempNode = tempNode.next;
+            }
+
+            return completeList;
+        }
     }
 }

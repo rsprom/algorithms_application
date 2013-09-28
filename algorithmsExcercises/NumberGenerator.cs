@@ -3,43 +3,35 @@
 using System;
 using System.IO;
 
-namespace algorithmsExcercises
+namespace algorithmsExercises
 {
     class NumberGenerator
     {
-        private Random randnum = new Random();
-        private StreamWriter sw = new StreamWriter("../../random.txt");
+        private Random randnum; 
+        private StreamWriter sw; 
 
-        //Fills 'random.txt' with 1000 random numbers
-        public void Generate()
+        //Constructs class
+        public NumberGenerator()
         {
-            using (sw)
-            {
-                for (int i = 0; i < 1000; i++)
-                {
-                    sw.WriteLine(randnum.Next(1, 1000));
-                }
-            }
+            randnum = new Random();
+            sw = new StreamWriter("../../random.txt");
+            sw.Close();
         }
 
-        //Overwrites random.txt file with new numbers
-        public void Generate(Boolean overwrite)
+        //Fills 'random.txt' with random numbers
+        public void Generate(int amount)
         {
-            if (overwrite == false)
-                return;
-            else
+            using (sw = new StreamWriter("../../random.txt", false))
             {
-                using (sw = new StreamWriter("../../random.txt", false))
+                for (int i = 0; i < amount; i++)
                 {
-                    for (int i = 0; i < 1000; i++)
-                    {
-                        sw.WriteLine(randnum.Next(1, 1000));
-                    }
+                    sw.WriteLine(randnum.Next(1, 9999));
                 }
             }
         }
 
         //Creates an Array with current 'random.txt'
+        //Adds to array from the back for consistancy with ReturnLinkedList method
         public int[] ReturnArray()
         {
             using (sw)
@@ -50,12 +42,33 @@ namespace algorithmsExcercises
 
                 int[] integers = new int[integerString.Length];
 
-                for (int i = 0; i < integerString.Length; i++)
+                for (int i = integerString.Length - 1; i > 0; i--)
                 {
                     integers[i] = int.Parse(integerString[i]);
                 }
 
                 return integers;
+            }
+        }
+
+        //Creates a LinkedList with current 'random.txt'
+        //Adds to list from the front for consistancy with ReturnArray method
+        public LinkedList ReturnLinkedList()
+        {
+            using (sw)
+            {
+                string fileContent = File.ReadAllText(@"../../random.txt");
+
+                string[] integerString = fileContent.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+                LinkedList list = new LinkedList();
+
+                for (int i = 0; i < integerString.Length; i++)
+                {
+                    list.AddToFront(integerString[i]);
+                }
+
+                return list;
             }
         }
     }
