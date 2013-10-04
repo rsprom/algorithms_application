@@ -6,6 +6,18 @@ namespace algorithmsExercises
     {
         public object data;
         public Node next;
+
+        public Node()
+        {
+            data = null;
+            next = null;
+        }
+
+        public Node(Object n, Node m)
+        {
+            data = n;
+            next = m;
+        }
     }
 
     class LinkedList
@@ -19,7 +31,7 @@ namespace algorithmsExercises
         {
             size = 0;
             _head = null;
-            _tail = null;
+            _tail = null; 
         }
 
         // Keeps count of list
@@ -31,43 +43,55 @@ namespace algorithmsExercises
             }
         }
 
-        // Add item to list to the front
+        // Add object to the front
         public void AddToFront(object item)
         {
             size++;
-
-            var insert = new Node();
-
-            insert.data = item;
-            insert.next = _head;
-            _head = insert;
+            var insert = new Node(item, null);
+            if (_head == null)
+            {
+                _head = _tail = insert;
+                Console.WriteLine("Set item to head and tail");
+            }
+            else
+            {
+                insert.next = _head;
+                _head = insert;
+            }
         }
 
-        //Add item to the back
+        //Add object to the back
         public void AddToBack(object item)
         {
             size++;
-
-            var insert = new Node();
-            Node pointer = new Node();
-
-            pointer = _head;
-            insert.data = item;
-            insert.next = _tail;
-
+            var insert = new Node(item, null);
             if (_head == null)
             {
-                _head = insert;
-                _head.next = _tail;
-                return;
+                _head = _tail = insert;
+                Console.WriteLine("Set item to head and tail");
             }
-
-            while (pointer.next != null)
+            else
             {
-                pointer = pointer.next;
+                _tail.next = insert;
+                _tail = insert;
+                Console.WriteLine("Set item to just tail");
             }
+        }
 
-            pointer.next = insert;
+        //Delete and retrieve item from front
+        public object DeleteFromFront()
+        {
+            Node item = new Node();
+            item = _head;
+            if (_head == null)
+            {
+                return null;
+            }
+            else
+            {
+                _head.next = _head;
+                return item;
+            }
         }
 
         public String ToString()

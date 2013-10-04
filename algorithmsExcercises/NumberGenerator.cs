@@ -37,11 +37,8 @@ namespace algorithmsExercises
             using (sw)
             {
                 string fileContent = File.ReadAllText(@"../../random.txt");
-
                 string[] integerString = fileContent.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-
                 int[] integers = new int[integerString.Length];
-
                 for (int i = integerString.Length - 1; i > 0; i--)
                 {
                     integers[i] = int.Parse(integerString[i]);
@@ -58,11 +55,8 @@ namespace algorithmsExercises
             using (sw)
             {
                 string fileContent = File.ReadAllText(@"../../random.txt");
-
                 string[] integerString = fileContent.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-
                 LinkedList list = new LinkedList();
-
                 for (int i = 0; i < integerString.Length; i++)
                 {
                     list.AddToFront(integerString[i]);

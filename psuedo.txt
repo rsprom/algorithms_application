@@ -1,0 +1,6 @@
+for (x < length)
+
+if (x+1) is greater than (x) don't switch
+if x+1 is less than x, switch
+
+++1 until end

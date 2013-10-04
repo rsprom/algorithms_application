@@ -12,20 +12,15 @@ namespace algorithmsExercises
             LinkedList linkedList = new LinkedList();
             int[] arrayList = new int[0];
 
+            linkedList.AddToBack('1');
+            linkedList.AddToBack('2');
+            linkedList.AddToBack('3');
+            linkedList.AddToBack('4');
+            linkedList.AddToBack('5');
+            linkedList.AddToFront('5');
 
-            stopwatch.Start();
-            newGenerator.Generate(50000);
-            Console.WriteLine("Generated");
-            linkedList = newGenerator.ReturnLinkedList();
-            stopwatch.Stop();
-            Console.WriteLine(stopwatch.Elapsed);
+            Console.WriteLine(linkedList.ToString());
 
-            stopwatch.Start();
-            newGenerator.Generate(5000000);
-            Console.WriteLine("Generated");
-            arrayList = newGenerator.ReturnArray();
-            stopwatch.Stop();
-            Console.WriteLine(stopwatch.Elapsed);
         }
     }
 }
