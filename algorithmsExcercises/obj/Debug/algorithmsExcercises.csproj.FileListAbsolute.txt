@@ -15,3 +15,9 @@ D:\Programming\.Net Projects\algorithmsExercises\algorithmsExcercises\obj\Debug\
 D:\Programming\.Net Projects\algorithmsExercises\algorithmsExcercises\bin\Debug\algorithmsExcercises.exe
 D:\Programming\.Net Projects\algorithmsExercises\algorithmsExcercises\bin\Debug\algorithmsExcercises.pdb
 D:\Programming\.Net Projects\algorithmsExercises\algorithmsExcercises\obj\Debug\algorithmsExcercises.csprojResolveAssemblyReference.cache
+C:\Programming\C#\algorithms_playground\algorithmsExcercises\bin\Debug\algorithmsExcercises.exe.config
+C:\Programming\C#\algorithms_playground\algorithmsExcercises\obj\Debug\algorithmsExcercises.exe
+C:\Programming\C#\algorithms_playground\algorithmsExcercises\obj\Debug\algorithmsExcercises.pdb
+C:\Programming\C#\algorithms_playground\algorithmsExcercises\bin\Debug\algorithmsExcercises.exe
+C:\Programming\C#\algorithms_playground\algorithmsExcercises\bin\Debug\algorithmsExcercises.pdb
+C:\Programming\C#\algorithms_playground\algorithmsExcercises\obj\Debug\algorithmsExcercises.csprojResolveAssemblyReference.cache

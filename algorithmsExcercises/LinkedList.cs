@@ -51,7 +51,6 @@ namespace algorithmsExercises
             if (_head == null)
             {
                 _head = _tail = insert;
-                Console.WriteLine("Set item to head and tail");
             }
             else
             {
@@ -68,13 +67,11 @@ namespace algorithmsExercises
             if (_head == null)
             {
                 _head = _tail = insert;
-                Console.WriteLine("Set item to head and tail");
             }
             else
             {
                 _tail.next = insert;
                 _tail = insert;
-                Console.WriteLine("Set item to just tail");
             }
         }
 
@@ -94,12 +91,50 @@ namespace algorithmsExercises
             }
         }
 
-        public String ToString()
+        //Print linked list backwards
+        public void PrintBackwards()
+        {
+            PrintBackwards(_head);
+        }
+
+        public void PrintBackwards(Node node)
+        {
+            if (node.next != null)
+            {
+                PrintBackwards(node.next);
+                Console.WriteLine(node.data);
+            }
+            else
+                Console.WriteLine(node.data);
+        }
+
+        //Reverse linked list
+        public void ReverseList()
+        {
+            ReverseList(_head);
+        }
+
+        public void ReverseList(Node node)
+        {
+            if (node != null && node.next != null)
+            {
+                Node next = node.next; 
+                Node afterNext = node.next.next; 
+                Node currentHead = _head; 
+
+                _head = next;
+                _head.next = currentHead;
+                node.next = afterNext;
+                ReverseList(node);
+            }
+            else
+                _tail = node;
+        }
+
+        public override String ToString()
         {
             String completeList = "";
-
             Node tempNode = _head;
-
             while (tempNode != null)
             {
                 completeList += tempNode.data + "\n";

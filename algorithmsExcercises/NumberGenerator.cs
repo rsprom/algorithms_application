@@ -1,4 +1,4 @@
-﻿// This class handles the random number generating, file creating, and Array/Linked List creation
+﻿// This class handles the random number generating, file creating, and Array/Linked List creation.
 
 using System;
 using System.IO;
@@ -10,7 +10,6 @@ namespace algorithmsExercises
         private Random randnum; 
         private StreamWriter sw; 
 
-        //Constructs class
         public NumberGenerator()
         {
             randnum = new Random();
@@ -28,10 +27,15 @@ namespace algorithmsExercises
                     sw.WriteLine(randnum.Next(1, 9999));
                 }
             }
+            sw.Close();
+        }
+
+        public void UseExisting()
+        {
+
         }
 
         //Creates an Array with current 'random.txt'
-        //Adds to array from the back for consistancy with ReturnLinkedList method
         public int[] ReturnArray()
         {
             using (sw)
@@ -39,7 +43,7 @@ namespace algorithmsExercises
                 string fileContent = File.ReadAllText(@"../../random.txt");
                 string[] integerString = fileContent.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                 int[] integers = new int[integerString.Length];
-                for (int i = integerString.Length - 1; i > 0; i--)
+                for (int i = 0; i > integerString.Length; i++)
                 {
                     integers[i] = int.Parse(integerString[i]);
                 }
@@ -49,7 +53,6 @@ namespace algorithmsExercises
         }
 
         //Creates a LinkedList with current 'random.txt'
-        //Adds to list from the front for consistancy with ReturnArray method
         public LinkedList ReturnLinkedList()
         {
             using (sw)
@@ -59,7 +62,7 @@ namespace algorithmsExercises
                 LinkedList list = new LinkedList();
                 for (int i = 0; i < integerString.Length; i++)
                 {
-                    list.AddToFront(integerString[i]);
+                    list.AddToBack(integerString[i]);
                 }
 
                 return list;
